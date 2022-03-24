@@ -1,0 +1,16 @@
+.link {
+  margin-right: 20px;
+  font-size: 1.3rem;
+  transition: font-weight 0.25s ease-in;
+  color: white;
+}
+
+.link:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.linkActive {
+    font-weight: bold;
+    color: orange;
+}
