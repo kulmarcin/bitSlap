@@ -10,7 +10,7 @@ export default function Landing() {
   let height;
   if (typeof window !== 'undefined') {
     // detect window screen width function
-    height = window.innerHeight - (mobile ? 55 : 64);
+    height = window.innerHeight;
   }
 
   return (
