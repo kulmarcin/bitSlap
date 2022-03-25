@@ -1,16 +1,21 @@
-import * as React from 'react';
+import * as React from 'react'
 import styles from '../../styles/menu.module.css';
 
-function ActiveLink({ children, href, current, click }) {
+function ActiveLink({ children, link, current, click }) {
+
   return (
-    <a
-      href={href}
+    <button
+      link={link}
       onClick={click}
-      className={`${styles.link} ${current == href ? styles.linkActive : ''}`}
+      className={`${styles.link} ${
+        current == link
+          ? styles.linkActive
+          : ''
+      }`}
     >
       {children}
-    </a>
-  );
+    </button>
+  )
 }
 
 export default ActiveLink;

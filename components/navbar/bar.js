@@ -29,7 +29,7 @@ export default function ButtonAppBar() {
               textAlign: matches ? 'center' : 'left'
             }}
           >
-            BitSlap
+            Logo
           </Typography>
           {!matches && <Menu />}
         </Toolbar>

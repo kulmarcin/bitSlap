@@ -1,16 +1,20 @@
 .link {
   margin-right: 20px;
   font-size: 1.3rem;
-  transition: font-weight 0.25s ease-in;
+  transition: font-size 0.25s ease-in;
   color: white;
+  background-color: transparent;
+  border: none;
 }
 
 .link:hover {
   cursor: pointer;
   color: orange;
+  transition: color 0.5s;
 }
 
 .linkActive {
     font-weight: bold;
     color: orange;
+    font-size: 1.4rem;
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import NavLink from '../utils/activeLink';
 
 export default function BasicMenu() {
-  const [current, setCurrent] = React.useState('/');
+  const [current, setCurrent] = React.useState(null);
   const clickHandler = e => {
     e.preventDefault();
     setCurrent(e.target.attributes[0].value);
@@ -10,16 +10,13 @@ export default function BasicMenu() {
 
   return (
     <div>
-      <NavLink click={clickHandler} href="/" current={current}>
-        About
-      </NavLink>
-      <NavLink click={clickHandler} href="#services" current={current}>
+      <NavLink click={clickHandler} link="#services" current={current}>
         Services
       </NavLink>
-      <NavLink click={clickHandler} href="#pricing" current={current}>
+      <NavLink click={clickHandler} link="#pricing" current={current}>
         Pricing
       </NavLink>
-      <NavLink click={clickHandler} href="#contact" current={current}>
+      <NavLink click={clickHandler} link="#contact" current={current}>
         Contact
       </NavLink>
     </div>
