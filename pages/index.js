@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import Bar from '../components/navbar/bar';
 import Landing from '../components/landing/Landing';
 import Services from '../components/services/Services'
+import Pricing from '../components/pricing/pricing';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <main className={styles.main}>
         <Landing />
         <Services/>
+        <Pricing/>
       </main>
 
       {/* <footer className={styles.footer}></footer> */}
