@@ -1,3 +1,13 @@
 .calculator {
+    margin-top: 2rem;
     display: flex;
+    flex-direction: column;
+
+}
+
+.estimation {
+    font-size: 1.7rem;
+    margin-top: 2rem;
+    color: white;
+    align-self: flex-start;
 }
