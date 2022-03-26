@@ -17,7 +17,7 @@ export default function Calculator() {
   return (
     <div className={styles.calculator}>
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Size</Typography>
@@ -36,7 +36,7 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>UI Refinement</Typography>
@@ -56,7 +56,7 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Users</Typography>
@@ -76,7 +76,7 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>
@@ -100,7 +100,7 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Social</Typography>
@@ -120,7 +120,7 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>eCommerce</Typography>
@@ -140,7 +140,7 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none' }}
+        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Management</Typography>
