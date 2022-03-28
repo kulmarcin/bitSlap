@@ -7,42 +7,98 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 
-import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { useState } from 'react';
 
 export default function Calculator() {
-  const [active, setActive] = useState({
+  const [size, setSize] = useState({
     small: false,
     medium: false,
     large: false,
+  });
+
+  const [refinement, setRefinement] = useState({
     minimum: false,
     basic: false,
     polished: false,
+  })
+
+  const [users, setUsers] = useState({
     classic: false,
     oauth: false,
     multitenant: false,
+  })
+
+  const [generated, setGenerated] = useState({
     dashboard: false,
     upload: false,
     profiles: false,
     emails: false,
     ratings: false,
+  })
+
+  const [social, setSocial] = useState({
     messaging: false,
     forums: false,
     sharing: false,
+  })
+
+  const [ecommerce, setEcommerce] = useState({
     subscription: false,
     cart: false,
     management: false,
+  })
+
+  const [management, setManagement] = useState({
     cms: false,
     analytics: false,
     multilingual: false
-  });
+  })
+ 
 
-  const handleClick = type => {
-    setActive(state => {
+  const handleSize = type => {
+    setSize(state => {
       return { state, [type]: !state[type] };
     }); // not '...state' because i want to reset state to initial
   };
+
+  const handleRefinement = type => {
+    setRefinement(state => {
+      return {state, [type]: !state[type]}
+    })
+  }
+
+  const handleUsers = type => {
+    setUsers(state => {
+      return {...state, [type]: !state[type]}
+    })
+  }
+
+  const handleGenerated = type => {
+    setGenerated(state => {
+      return {...state, [type]: !state[type]}
+    })
+  }
+
+  const handleSocial = type => {
+    setSocial(state => {
+      return {...state, [type]: !state[type]}
+    })
+  }
+
+  const handleCommerce = type => {
+    setEcommerce(state => {
+      return {...state, [type]: !state[type]}
+    })
+  }
+
+  const handleManagement = type => {
+    setManagement(state => {
+      return {...state, [type]: !state[type]}
+    })
+  }
+
+  
 
   return (
     <div className={styles.calculator}>
@@ -64,25 +120,25 @@ export default function Calculator() {
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
             <button
-              onClick={handleClick.bind(this, 'small')}
+              onClick={handleSize.bind(this, 'small')}
               className={`${styles.button} ${
-                active.small && styles.buttonActive
+                size.small && styles.buttonActive
               }`}
             >
               Small
             </button>
             <button
-              onClick={handleClick.bind(this, 'medium')}
+              onClick={handleSize.bind(this, 'medium')}
               className={`${styles.button} ${
-                active.medium && styles.buttonActive
+                size.medium && styles.buttonActive
               }`}
             >
               Medium
             </button>
             <button
-              onClick={handleClick.bind(this, 'large')}
+              onClick={handleSize.bind(this, 'large')}
               className={`${styles.button} ${
-                active.large && styles.buttonActive
+                size.large && styles.buttonActive
               }`}
             >
               Large
@@ -108,9 +164,24 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="Minimum" variant="" onClick={handleClick} />
-            <Chip label="Basic" variant="outlined" onClick={handleClick} />
-            <Chip label="Polished" variant="outlined" onClick={handleClick} />
+            <button
+              onClick={handleRefinement.bind(this, 'minimum')}
+              className={`${styles.button} ${
+                refinement.minimum && styles.buttonActive
+              }`}
+            >Minimum</button>
+            <button
+              onClick={handleRefinement.bind(this, 'basic')}
+              className={`${styles.button} ${
+                refinement.basic && styles.buttonActive
+              }`}
+            >Basic</button>
+            <button
+              onClick={handleRefinement.bind(this, 'polished')}
+              className={`${styles.button} ${
+                refinement.polished && styles.buttonActive
+              }`}
+            >Polished</button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -132,22 +203,24 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip
-              label="Classic Signup"
-              variant=""
-              onClick={handleClick}
-              sx={{ marginBottom: 1 }}
-            />
-            <Chip
-              label="OAuth Signup"
-              variant="outlined"
-              onClick={handleClick}
-            />
-            <Chip
-              label="Multi-tenant Accounts"
-              variant="outlined"
-              onClick={handleClick}
-            />
+            <button
+              onClick={handleUsers.bind(this, 'classic')}
+              className={`${styles.button} ${
+                users.classic && styles.buttonActive
+              }`}
+            >Classic Signup</button>
+            <button
+              onClick={handleUsers.bind(this, 'oauth')}
+              className={`${styles.button} ${
+                users.oauth && styles.buttonActive
+              }`}
+            >OAuth Signup</button>
+            <button
+              onClick={handleUsers.bind(this, 'multitenant')}
+              className={`${styles.button} ${
+                users.multitenant && styles.buttonActive
+              }`}
+            >Multi-tenant Accounts</button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -171,20 +244,36 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip
-              label="Dashboard"
-              variant=""
-              onClick={handleClick}
-              sx={{ marginBottom: 1 }}
-            />
-            <Chip
-              label="File Uploading"
-              variant="outlined"
-              onClick={handleClick}
-            />
-            <Chip label="Profiles" variant="outlined" onClick={handleClick} />
-            <Chip label="Emails" variant="outlined" onClick={handleClick} />
-            <Chip label="Ratings" variant="outlined" onClick={handleClick} />
+            <button
+              onClick={handleGenerated.bind(this, 'dashboard')}
+              className={`${styles.button} ${
+                generated.dashboard && styles.buttonActive
+              }`}
+            >Dashboard</button>
+            <button
+              onClick={handleGenerated.bind(this, 'upload')}
+              className={`${styles.button} ${
+                generated.upload && styles.buttonActive
+              }`}
+            >File Uploading</button>
+            <button
+              onClick={handleGenerated.bind(this, 'profiles')}
+              className={`${styles.button} ${
+                generated.profiles && styles.buttonActive
+              }`}
+            >Profiles</button>
+            <button
+              onClick={handleGenerated.bind(this, 'emails')}
+              className={`${styles.button} ${
+                generated.emails && styles.buttonActive
+              }`}
+            >Emails</button>
+            <button
+              onClick={handleGenerated.bind(this, 'ratings')}
+              className={`${styles.button} ${
+                generated.ratings && styles.buttonActive
+              }`}
+            >Ratings</button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -206,13 +295,24 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="Messaging" variant="" onClick={handleClick} />
-            <Chip label="Forums" variant="outlined" onClick={handleClick} />
-            <Chip
-              label="Social Sharing"
-              variant="outlined"
-              onClick={handleClick}
-            />
+            <button
+              onClick={handleSocial.bind(this, 'messaging')}
+              className={`${styles.button} ${
+                social.messaging && styles.buttonActive
+              }`}
+            >Messaging</button>
+            <button
+              onClick={handleSocial.bind(this, 'forums')}
+              className={`${styles.button} ${
+                social.forums && styles.buttonActive
+              }`}
+            >Forums</button>
+            <button
+              onClick={handleSocial.bind(this, 'sharing')}
+              className={`${styles.button} ${
+                social.sharing && styles.buttonActive
+              }`}
+            >Social Sharing</button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -234,22 +334,24 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip
-              label="Subscription"
-              variant=""
-              onClick={handleClick}
-              sx={{ marginBottom: 1 }}
-            />
-            <Chip
-              label="Shopping Cart"
-              variant="outlined"
-              onClick={handleClick}
-            />
-            <Chip
-              label="Product Management"
-              variant="outlined"
-              onClick={handleClick}
-            />
+           <button
+              onClick={handleCommerce.bind(this, 'subscription')}
+              className={`${styles.button} ${
+                ecommerce.subscription && styles.buttonActive
+              }`}
+            >Subscription</button>
+            <button
+              onClick={handleCommerce.bind(this, 'cart')}
+              className={`${styles.button} ${
+                ecommerce.cart && styles.buttonActive
+              }`}
+            >Shopping Cart</button>
+            <button
+              onClick={handleCommerce.bind(this, 'management')}
+              className={`${styles.button} ${
+                ecommerce.management && styles.buttonActive
+              }`}
+            >Product Management</button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -271,18 +373,24 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip
-              label="CMS Integration"
-              variant=""
-              onClick={handleClick}
-              sx={{ marginBottom: 1 }}
-            />
-            <Chip label="Analytics" variant="outlined" onClick={handleClick} />
-            <Chip
-              label="Multilingual Support"
-              variant="outlined"
-              onClick={handleClick}
-            />
+            <button
+              onClick={handleManagement.bind(this, 'cms')}
+              className={`${styles.button} ${
+                management.cms && styles.buttonActive
+              }`}
+            >CMS Integration</button>
+            <button
+              onClick={handleManagement.bind(this, 'analytics')}
+              className={`${styles.button} ${
+                management.analytics && styles.buttonActive
+              }`}
+            >Analytics</button>
+            <button
+              onClick={handleManagement.bind(this, 'multilingual')}
+              className={`${styles.button} ${
+                management.multilingual && styles.buttonActive
+              }`}
+            >Multilingual Support</button>
           </Stack>
         </AccordionDetails>
       </Accordion>

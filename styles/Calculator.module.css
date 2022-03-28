@@ -18,11 +18,13 @@
     border-radius: 15px;
     height:30px;
     transition: background-color 0.25s ease-out;
+    margin-bottom: 5px;
+    min-width: 60px;
     
 }
 
 .buttonActive {
     color: orange;
-    background-color: gray;
+    background-color: black;
     font-weight: bold;
 }
