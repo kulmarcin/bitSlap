@@ -8,97 +8,140 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 
 import Stack from '@mui/material/Stack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Calculator() {
+  const DAILY_SALARY = 100;
+
+  const [previous, setPrevious] = useState(null)
+  const [days, setDays] = useState(0);
+  const [total, setTotal] = useState(0);
+
   const [size, setSize] = useState({
     small: false,
     medium: false,
-    large: false,
+    large: false
   });
 
   const [refinement, setRefinement] = useState({
     minimum: false,
     basic: false,
-    polished: false,
-  })
+    polished: false
+  });
 
   const [users, setUsers] = useState({
     classic: false,
     oauth: false,
-    multitenant: false,
-  })
+    multitenant: false
+  });
 
   const [generated, setGenerated] = useState({
     dashboard: false,
     upload: false,
     profiles: false,
     emails: false,
-    ratings: false,
-  })
+    ratings: false
+  });
 
   const [social, setSocial] = useState({
     messaging: false,
     forums: false,
-    sharing: false,
-  })
+    sharing: false
+  });
 
   const [ecommerce, setEcommerce] = useState({
     subscription: false,
     cart: false,
-    management: false,
-  })
+    management: false
+  });
 
   const [management, setManagement] = useState({
     cms: false,
     analytics: false,
     multilingual: false
-  })
- 
+  });
+
+  useEffect(() => {
+    setTotal(days * DAILY_SALARY);
+    console.log(days);
+  }, [days]);
 
   const handleSize = type => {
     setSize(state => {
       return { state, [type]: !state[type] };
     }); // not '...state' because i want to reset state to initial
+
+    
+
+    switch (type) {
+      case 'small':
+        if(previous === 'medium') setDays(state=> state-4)
+        if(previous === 'large') setDays(state=> state-7)
+        setPrevious(type)
+        !size[type] ? setDays(state => state + 2) : setDays(state => state - 2);
+        break;
+      case 'medium':
+        if(previous === 'small') setDays(state=> state-2)
+        if(previous === 'large') setDays(state=> state-7)
+        setPrevious(type)
+        !size[type] ? setDays(state => state + 4) : setDays(state => state - 4);
+        break;
+      case 'large':
+        if(previous === 'medium') setDays(state=> state-4)
+        if(previous === 'small') setDays(state=> state-2)
+        setPrevious(type)
+        !size[type] ? setDays(state => state + 7) : setDays(state => state - 7);
+        break;
+    }
   };
 
   const handleRefinement = type => {
     setRefinement(state => {
-      return {state, [type]: !state[type]}
-    })
-  }
+      return { state, [type]: !state[type] };
+    });
+
+    switch (type) {
+      case 'small':
+        setDays(state => state + 2);
+        break;
+      case 'medium':
+        setDays(state => state + 4);
+        break;
+      case 'large':
+        setDays(state => state + 7);
+        break;
+    }
+  };
 
   const handleUsers = type => {
     setUsers(state => {
-      return {...state, [type]: !state[type]}
-    })
-  }
+      return { ...state, [type]: !state[type] };
+    });
+  };
 
   const handleGenerated = type => {
     setGenerated(state => {
-      return {...state, [type]: !state[type]}
-    })
-  }
+      return { ...state, [type]: !state[type] };
+    });
+  };
 
   const handleSocial = type => {
     setSocial(state => {
-      return {...state, [type]: !state[type]}
-    })
-  }
+      return { ...state, [type]: !state[type] };
+    });
+  };
 
   const handleCommerce = type => {
     setEcommerce(state => {
-      return {...state, [type]: !state[type]}
-    })
-  }
+      return { ...state, [type]: !state[type] };
+    });
+  };
 
   const handleManagement = type => {
     setManagement(state => {
-      return {...state, [type]: !state[type]}
-    })
-  }
-
-  
+      return { ...state, [type]: !state[type] };
+    });
+  };
 
   return (
     <div className={styles.calculator}>
@@ -169,19 +212,25 @@ export default function Calculator() {
               className={`${styles.button} ${
                 refinement.minimum && styles.buttonActive
               }`}
-            >Minimum</button>
+            >
+              Minimum
+            </button>
             <button
               onClick={handleRefinement.bind(this, 'basic')}
               className={`${styles.button} ${
                 refinement.basic && styles.buttonActive
               }`}
-            >Basic</button>
+            >
+              Basic
+            </button>
             <button
               onClick={handleRefinement.bind(this, 'polished')}
               className={`${styles.button} ${
                 refinement.polished && styles.buttonActive
               }`}
-            >Polished</button>
+            >
+              Polished
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -208,19 +257,25 @@ export default function Calculator() {
               className={`${styles.button} ${
                 users.classic && styles.buttonActive
               }`}
-            >Classic Signup</button>
+            >
+              Classic Signup
+            </button>
             <button
               onClick={handleUsers.bind(this, 'oauth')}
               className={`${styles.button} ${
                 users.oauth && styles.buttonActive
               }`}
-            >OAuth Signup</button>
+            >
+              OAuth Signup
+            </button>
             <button
               onClick={handleUsers.bind(this, 'multitenant')}
               className={`${styles.button} ${
                 users.multitenant && styles.buttonActive
               }`}
-            >Multi-tenant Accounts</button>
+            >
+              Multi-tenant Accounts
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -249,31 +304,41 @@ export default function Calculator() {
               className={`${styles.button} ${
                 generated.dashboard && styles.buttonActive
               }`}
-            >Dashboard</button>
+            >
+              Dashboard
+            </button>
             <button
               onClick={handleGenerated.bind(this, 'upload')}
               className={`${styles.button} ${
                 generated.upload && styles.buttonActive
               }`}
-            >File Uploading</button>
+            >
+              File Uploading
+            </button>
             <button
               onClick={handleGenerated.bind(this, 'profiles')}
               className={`${styles.button} ${
                 generated.profiles && styles.buttonActive
               }`}
-            >Profiles</button>
+            >
+              Profiles
+            </button>
             <button
               onClick={handleGenerated.bind(this, 'emails')}
               className={`${styles.button} ${
                 generated.emails && styles.buttonActive
               }`}
-            >Emails</button>
+            >
+              Emails
+            </button>
             <button
               onClick={handleGenerated.bind(this, 'ratings')}
               className={`${styles.button} ${
                 generated.ratings && styles.buttonActive
               }`}
-            >Ratings</button>
+            >
+              Ratings
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -300,19 +365,25 @@ export default function Calculator() {
               className={`${styles.button} ${
                 social.messaging && styles.buttonActive
               }`}
-            >Messaging</button>
+            >
+              Messaging
+            </button>
             <button
               onClick={handleSocial.bind(this, 'forums')}
               className={`${styles.button} ${
                 social.forums && styles.buttonActive
               }`}
-            >Forums</button>
+            >
+              Forums
+            </button>
             <button
               onClick={handleSocial.bind(this, 'sharing')}
               className={`${styles.button} ${
                 social.sharing && styles.buttonActive
               }`}
-            >Social Sharing</button>
+            >
+              Social Sharing
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -334,24 +405,30 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-           <button
+            <button
               onClick={handleCommerce.bind(this, 'subscription')}
               className={`${styles.button} ${
                 ecommerce.subscription && styles.buttonActive
               }`}
-            >Subscription</button>
+            >
+              Subscription
+            </button>
             <button
               onClick={handleCommerce.bind(this, 'cart')}
               className={`${styles.button} ${
                 ecommerce.cart && styles.buttonActive
               }`}
-            >Shopping Cart</button>
+            >
+              Shopping Cart
+            </button>
             <button
               onClick={handleCommerce.bind(this, 'management')}
               className={`${styles.button} ${
                 ecommerce.management && styles.buttonActive
               }`}
-            >Product Management</button>
+            >
+              Product Management
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -378,24 +455,31 @@ export default function Calculator() {
               className={`${styles.button} ${
                 management.cms && styles.buttonActive
               }`}
-            >CMS Integration</button>
+            >
+              CMS Integration
+            </button>
             <button
               onClick={handleManagement.bind(this, 'analytics')}
               className={`${styles.button} ${
                 management.analytics && styles.buttonActive
               }`}
-            >Analytics</button>
+            >
+              Analytics
+            </button>
             <button
               onClick={handleManagement.bind(this, 'multilingual')}
               className={`${styles.button} ${
                 management.multilingual && styles.buttonActive
               }`}
-            >Multilingual Support</button>
+            >
+              Multilingual Support
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
 
-      <div className={styles.estimation}>Total Cost: $0</div>
+      <div className={styles.estimation}>Total Cost: ${total}</div>
+      <div className={styles.completion}>Completion in: {days} days</div>
     </div>
   );
 }
