@@ -30,6 +30,10 @@
     
 }
 
+.button:hover {
+    cursor: pointer;
+}
+
 .buttonActive {
     color: orange;
     background-color: black;

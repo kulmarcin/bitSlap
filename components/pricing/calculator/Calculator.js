@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
+
 import styles from '../../../styles/Calculator.module.css';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -8,12 +10,20 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 
 import Stack from '@mui/material/Stack';
-import { useEffect, useState } from 'react';
 
 export default function Calculator() {
+  const smallRef = useRef(null);
+  const mediumRef = useRef(null);
+  const largeRef = useRef(null);
+
+  const minimumRef = useRef(null);
+  const basicRef = useRef(null);
+  const polishedRef = useRef(null);
+
   const DAILY_SALARY = 100;
 
-  const [previous, setPrevious] = useState(null)
+  const [previousSize, setPreviousSize] = useState(null);
+  const [previousRefinement, setPreviousRefinement] = useState(null);
   const [days, setDays] = useState(0);
   const [total, setTotal] = useState(0);
 
@@ -63,52 +73,80 @@ export default function Calculator() {
 
   useEffect(() => {
     setTotal(days * DAILY_SALARY);
-    console.log(days);
   }, [days]);
 
-  const handleSize = type => {
+  const handleSize = (type, e) => {
     setSize(state => {
       return { state, [type]: !state[type] };
     }); // not '...state' because i want to reset state to initial
 
-    
+    e.target.disabled = !e.target.disabled;
 
     switch (type) {
       case 'small':
-        if(previous === 'medium') setDays(state=> state-4)
-        if(previous === 'large') setDays(state=> state-7)
-        setPrevious(type)
+        mediumRef.current.disabled = false;
+        largeRef.current.disabled = false;
+        if (previousSize === 'medium') setDays(state => state - 4);
+        if (previousSize === 'large') setDays(state => state - 7);
+        setPreviousSize(type);
         !size[type] ? setDays(state => state + 2) : setDays(state => state - 2);
         break;
       case 'medium':
-        if(previous === 'small') setDays(state=> state-2)
-        if(previous === 'large') setDays(state=> state-7)
-        setPrevious(type)
+        smallRef.current.disabled = false;
+        largeRef.current.disabled = false;
+        if (previousSize === 'small') setDays(state => state - 2);
+        if (previousSize === 'large') setDays(state => state - 7);
+        setPreviousSize(type);
         !size[type] ? setDays(state => state + 4) : setDays(state => state - 4);
         break;
       case 'large':
-        if(previous === 'medium') setDays(state=> state-4)
-        if(previous === 'small') setDays(state=> state-2)
-        setPrevious(type)
+        mediumRef.current.disabled = false;
+        smallRef.current.disabled = false;
+        if (previousSize === 'medium') setDays(state => state - 4);
+        if (previousSize === 'small') setDays(state => state - 2);
+        setPreviousSize(type);
         !size[type] ? setDays(state => state + 7) : setDays(state => state - 7);
         break;
     }
   };
 
-  const handleRefinement = type => {
+  const handleRefinement = (type, e) => {
     setRefinement(state => {
       return { state, [type]: !state[type] };
     });
 
+    e.target.disabled = !e.target.disabled;
+
     switch (type) {
-      case 'small':
-        setDays(state => state + 2);
+      case 'minimum':
+        basicRef.current.disabled = false;
+        polishedRef.current.disabled = false;
+        if (previousRefinement === 'basic') setDays(state => state - 3);
+        if (previousRefinement === 'polished') setDays(state => state - 5);
+        setPreviousRefinement(type);
+        !refinement[type]
+          ? setDays(state => state + 1)
+          : setDays(state => state - 1);
         break;
-      case 'medium':
-        setDays(state => state + 4);
+      case 'basic':
+        minimumRef.current.disabled = false;
+        polishedRef.current.disabled = false;
+        if (previousRefinement === 'minimum') setDays(state => state - 1);
+        if (previousRefinement === 'polished') setDays(state => state - 5);
+        setPreviousRefinement(type);
+        !refinement[type]
+          ? setDays(state => state + 3)
+          : setDays(state => state - 3);
         break;
-      case 'large':
-        setDays(state => state + 7);
+      case 'polished':
+        basicRef.current.disabled = false;
+        minimumRef.current.disabled = false;
+        if (previousRefinement === 'basic') setDays(state => state - 3);
+        if (previousRefinement === 'minimum') setDays(state => state - 1);
+        setPreviousRefinement(type);
+        !refinement[type]
+          ? setDays(state => state + 5)
+          : setDays(state => state - 5);
         break;
     }
   };
@@ -117,30 +155,130 @@ export default function Calculator() {
     setUsers(state => {
       return { ...state, [type]: !state[type] };
     });
+
+    switch (type) {
+      case 'classic':
+        !users[type]
+          ? setDays(state => state + 2)
+          : setDays(state => state - 2);
+        break;
+      case 'oauth':
+        !users[type]
+          ? setDays(state => state + 2)
+          : setDays(state => state - 2);
+        break;
+      case 'multitenant':
+        !users[type]
+          ? setDays(state => state + 2)
+          : setDays(state => state - 2);
+        break;
+    }
   };
 
   const handleGenerated = type => {
     setGenerated(state => {
       return { ...state, [type]: !state[type] };
     });
+
+    switch (type) {
+      case 'dashboard':
+        !generated[type]
+          ? setDays(state => state + 7)
+          : setDays(state => state - 7);
+        break;
+      case 'upload':
+        !generated[type]
+          ? setDays(state => state + 2)
+          : setDays(state => state - 2);
+        break;
+      case 'profiles':
+        !generated[type]
+          ? setDays(state => state + 3)
+          : setDays(state => state - 3);
+        break;
+      case 'emails':
+        !generated[type]
+          ? setDays(state => state + 2)
+          : setDays(state => state - 2);
+        break;
+      case 'ratings':
+        !generated[type]
+          ? setDays(state => state + 4)
+          : setDays(state => state - 4);
+        break;
+    }
   };
 
   const handleSocial = type => {
     setSocial(state => {
       return { ...state, [type]: !state[type] };
     });
+
+    switch (type) {
+      case 'messaging':
+        !social[type]
+          ? setDays(state => state + 6)
+          : setDays(state => state - 6);
+        break;
+      case 'forums':
+        !generated[type]
+          ? setDays(state => state + 5)
+          : setDays(state => state - 5);
+        break;
+      case 'sharing':
+        !generated[type]
+          ? setDays(state => state + 2)
+          : setDays(state => state - 2);
+        break;
+    }
   };
 
   const handleCommerce = type => {
     setEcommerce(state => {
       return { ...state, [type]: !state[type] };
     });
+
+    switch (type) {
+      case 'subscription':
+        !ecommerce[type]
+          ? setDays(state => state + 7)
+          : setDays(state => state - 7);
+        break;
+      case 'cart':
+        !ecommerce[type]
+          ? setDays(state => state + 5)
+          : setDays(state => state - 5);
+        break;
+      case 'management':
+        !ecommerce[type]
+          ? setDays(state => state + 4)
+          : setDays(state => state - 4);
+        break;
+    }
   };
 
   const handleManagement = type => {
     setManagement(state => {
       return { ...state, [type]: !state[type] };
     });
+
+    switch (type) {
+      case 'cms':
+        !management[type]
+          ? setDays(state => state + 6)
+          : setDays(state => state - 6);
+        break;
+      case 'analytics':
+        !management[type]
+          ? setDays(state => state + 4)
+          : setDays(state => state - 4);
+        break;
+      case 'multilingual':
+        !management[type]
+          ? setDays(state => state + 4)
+          : setDays(state => state - 4);
+        break;
+    }
   };
 
   return (
@@ -163,6 +301,8 @@ export default function Calculator() {
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
             <button
+              disabled={false}
+              ref={smallRef}
               onClick={handleSize.bind(this, 'small')}
               className={`${styles.button} ${
                 size.small && styles.buttonActive
@@ -171,6 +311,8 @@ export default function Calculator() {
               Small
             </button>
             <button
+              disabled={false}
+              ref={mediumRef}
               onClick={handleSize.bind(this, 'medium')}
               className={`${styles.button} ${
                 size.medium && styles.buttonActive
@@ -179,6 +321,8 @@ export default function Calculator() {
               Medium
             </button>
             <button
+              disabled={false}
+              ref={largeRef}
               onClick={handleSize.bind(this, 'large')}
               className={`${styles.button} ${
                 size.large && styles.buttonActive
@@ -208,6 +352,7 @@ export default function Calculator() {
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
             <button
+              ref={minimumRef}
               onClick={handleRefinement.bind(this, 'minimum')}
               className={`${styles.button} ${
                 refinement.minimum && styles.buttonActive
@@ -216,6 +361,7 @@ export default function Calculator() {
               Minimum
             </button>
             <button
+              ref={basicRef}
               onClick={handleRefinement.bind(this, 'basic')}
               className={`${styles.button} ${
                 refinement.basic && styles.buttonActive
@@ -224,6 +370,7 @@ export default function Calculator() {
               Basic
             </button>
             <button
+              ref={polishedRef}
               onClick={handleRefinement.bind(this, 'polished')}
               className={`${styles.button} ${
                 refinement.polished && styles.buttonActive
