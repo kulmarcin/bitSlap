@@ -9,15 +9,50 @@ import Typography from '@mui/material/Typography';
 
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import { useState } from 'react';
 
 export default function Calculator() {
-  const handleClick = () => {
-    console.log('hey');
+  const [active, setActive] = useState({
+    small: false,
+    medium: false,
+    large: false,
+    minimum: false,
+    basic: false,
+    polished: false,
+    classic: false,
+    oauth: false,
+    multitenant: false,
+    dashboard: false,
+    upload: false,
+    profiles: false,
+    emails: false,
+    ratings: false,
+    messaging: false,
+    forums: false,
+    sharing: false,
+    subscription: false,
+    cart: false,
+    management: false,
+    cms: false,
+    analytics: false,
+    multilingual: false
+  });
+
+  const handleClick = type => {
+    setActive(state => {
+      return { state, [type]: !state[type] };
+    }); // not '...state' because i want to reset state to initial
   };
+
   return (
     <div className={styles.calculator}>
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Size</Typography>
@@ -28,21 +63,47 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="Small" variant="" onClick={handleClick} />
-            <Chip label="Medium" variant="outlined" onClick={handleClick} />
-            <Chip label="Large" variant="outlined" onClick={handleClick} />
+            <button
+              onClick={handleClick.bind(this, 'small')}
+              className={`${styles.button} ${
+                active.small && styles.buttonActive
+              }`}
+            >
+              Small
+            </button>
+            <button
+              onClick={handleClick.bind(this, 'medium')}
+              className={`${styles.button} ${
+                active.medium && styles.buttonActive
+              }`}
+            >
+              Medium
+            </button>
+            <button
+              onClick={handleClick.bind(this, 'large')}
+              className={`${styles.button} ${
+                active.large && styles.buttonActive
+              }`}
+            >
+              Large
+            </button>
           </Stack>
         </AccordionDetails>
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>UI Refinement</Typography>
         </AccordionSummary>
         <AccordionDetails>
-        <Stack
+          <Stack
             direction="row"
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
@@ -51,32 +112,53 @@ export default function Calculator() {
             <Chip label="Basic" variant="outlined" onClick={handleClick} />
             <Chip label="Polished" variant="outlined" onClick={handleClick} />
           </Stack>
-
         </AccordionDetails>
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Users</Typography>
         </AccordionSummary>
         <AccordionDetails>
-
-        <Stack
+          <Stack
             direction="row"
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="Classic Signup" variant="" onClick={handleClick} sx={{marginBottom: 1}} />
-            <Chip label="OAuth Signup" variant="outlined" onClick={handleClick} />
-            <Chip label="Multi-tenant Accounts" variant="outlined" onClick={handleClick}/>
+            <Chip
+              label="Classic Signup"
+              variant=""
+              onClick={handleClick}
+              sx={{ marginBottom: 1 }}
+            />
+            <Chip
+              label="OAuth Signup"
+              variant="outlined"
+              onClick={handleClick}
+            />
+            <Chip
+              label="Multi-tenant Accounts"
+              variant="outlined"
+              onClick={handleClick}
+            />
           </Stack>
         </AccordionDetails>
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>
@@ -84,14 +166,22 @@ export default function Calculator() {
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-
-        <Stack
+          <Stack
             direction="row"
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="Dashboard" variant="" onClick={handleClick} sx={{marginBottom: 1}} />
-            <Chip label="File Uploading" variant="outlined" onClick={handleClick} />
+            <Chip
+              label="Dashboard"
+              variant=""
+              onClick={handleClick}
+              sx={{ marginBottom: 1 }}
+            />
+            <Chip
+              label="File Uploading"
+              variant="outlined"
+              onClick={handleClick}
+            />
             <Chip label="Profiles" variant="outlined" onClick={handleClick} />
             <Chip label="Emails" variant="outlined" onClick={handleClick} />
             <Chip label="Ratings" variant="outlined" onClick={handleClick} />
@@ -100,61 +190,99 @@ export default function Calculator() {
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Social</Typography>
         </AccordionSummary>
         <AccordionDetails>
-
-        <Stack
+          <Stack
             direction="row"
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
             <Chip label="Messaging" variant="" onClick={handleClick} />
             <Chip label="Forums" variant="outlined" onClick={handleClick} />
-            <Chip label="Social Sharing" variant="outlined" onClick={handleClick} />
+            <Chip
+              label="Social Sharing"
+              variant="outlined"
+              onClick={handleClick}
+            />
           </Stack>
         </AccordionDetails>
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>eCommerce</Typography>
         </AccordionSummary>
         <AccordionDetails>
-
-        <Stack
+          <Stack
             direction="row"
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="Subscription" variant="" onClick={handleClick} sx={{marginBottom: 1}} />
-            <Chip label="Shopping Cart" variant="outlined" onClick={handleClick} />
-            <Chip label="Product Management" variant="outlined" onClick={handleClick} />
+            <Chip
+              label="Subscription"
+              variant=""
+              onClick={handleClick}
+              sx={{ marginBottom: 1 }}
+            />
+            <Chip
+              label="Shopping Cart"
+              variant="outlined"
+              onClick={handleClick}
+            />
+            <Chip
+              label="Product Management"
+              variant="outlined"
+              onClick={handleClick}
+            />
           </Stack>
         </AccordionDetails>
       </Accordion>
 
       <Accordion
-        sx={{ width: 350, backgroundColor: 'lightgray', textShadow: 'none', boxShadow: '5px 5px 5px dimgray' }}
+        sx={{
+          width: 350,
+          backgroundColor: 'lightgray',
+          textShadow: 'none',
+          boxShadow: '5px 5px 5px dimgray'
+        }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: 'bold' }}>Management</Typography>
         </AccordionSummary>
         <AccordionDetails>
-
-        <Stack
+          <Stack
             direction="row"
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <Chip label="CMS Integration" variant="" onClick={handleClick} sx={{marginBottom:1}} />
+            <Chip
+              label="CMS Integration"
+              variant=""
+              onClick={handleClick}
+              sx={{ marginBottom: 1 }}
+            />
             <Chip label="Analytics" variant="outlined" onClick={handleClick} />
-            <Chip label="Multilingual Support" variant="outlined" onClick={handleClick} />
+            <Chip
+              label="Multilingual Support"
+              variant="outlined"
+              onClick={handleClick}
+            />
           </Stack>
         </AccordionDetails>
       </Accordion>
