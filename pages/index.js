@@ -3,7 +3,8 @@ import styles from '../styles/Home.module.css';
 import Bar from '../components/navbar/bar';
 import Landing from '../components/landing/Landing';
 import Services from '../components/services/Services'
-import Pricing from '../components/pricing/pricing';
+import Pricing from '../components/pricing/Pricing';
+import Contact from '../components/contact/Contact';
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Landing />
         <Services/>
         <Pricing/>
+        <Contact/>
       </main>
 
       {/* <footer className={styles.footer}></footer> */}
