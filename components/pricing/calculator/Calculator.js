@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import styles from '../../../styles/Calculator.module.css';
 
@@ -10,6 +10,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 
 import Stack from '@mui/material/Stack';
+import Tooltip from './tooltip'
 
 export default function Calculator() {
   const smallRef = useRef(null);
@@ -300,6 +301,11 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>4-5 key feature pages</h3>
+              </div>
+            }>
             <button
               disabled={false}
               ref={smallRef}
@@ -310,7 +316,16 @@ export default function Calculator() {
             >
               Small
             </button>
-            <button
+            
+            </Tooltip>
+            
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>6-9 feature pages</h3>
+              </div>
+            }>
+              
+              <button
               disabled={false}
               ref={mediumRef}
               onClick={handleSize.bind(this, 'medium')}
@@ -320,7 +335,17 @@ export default function Calculator() {
             >
               Medium
             </button>
-            <button
+             
+            
+            </Tooltip>
+            
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>10-15 key feature pages</h3>
+              </div>
+            }>
+              
+              <button
               disabled={false}
               ref={largeRef}
               onClick={handleSize.bind(this, 'large')}
@@ -330,6 +355,9 @@ export default function Calculator() {
             >
               Large
             </button>
+              
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -351,7 +379,13 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <button
+            <Tooltip title={
+              <div className={styles.tooltip}> 
+                <h3>Minimum viable product - very raw</h3>
+              </div>
+            }>
+              
+              <button
               ref={minimumRef}
               onClick={handleRefinement.bind(this, 'minimum')}
               className={`${styles.button} ${
@@ -360,7 +394,17 @@ export default function Calculator() {
             >
               Minimum
             </button>
-            <button
+              
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                  <h3>Quite basic, but pleasing eye</h3>
+              </div>
+            }>
+              
+              <button
               ref={basicRef}
               onClick={handleRefinement.bind(this, 'basic')}
               className={`${styles.button} ${
@@ -369,7 +413,17 @@ export default function Calculator() {
             >
               Basic
             </button>
-            <button
+              
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Professional UI design with animations</h3>
+              </div>
+            }>
+              
+              <button
               ref={polishedRef}
               onClick={handleRefinement.bind(this, 'polished')}
               className={`${styles.button} ${
@@ -378,6 +432,9 @@ export default function Calculator() {
             >
               Polished
             </button>
+              
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -399,7 +456,12 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <button
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Email/Password Sign Up</h3>
+              </div>
+            }>
+              <button
               onClick={handleUsers.bind(this, 'classic')}
               className={`${styles.button} ${
                 users.classic && styles.buttonActive
@@ -407,7 +469,15 @@ export default function Calculator() {
             >
               Classic Signup
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Facebook/Github/Twitter etc. Sign Up</h3>
+              </div>
+            }>
+              <button
               onClick={handleUsers.bind(this, 'oauth')}
               className={`${styles.button} ${
                 users.oauth && styles.buttonActive
@@ -415,7 +485,15 @@ export default function Calculator() {
             >
               OAuth Signup
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Account based signups each with their own administrators and users</h3>
+              </div>
+            }>
+              <button
               onClick={handleUsers.bind(this, 'multitenant')}
               className={`${styles.button} ${
                 users.multitenant && styles.buttonActive
@@ -423,6 +501,8 @@ export default function Calculator() {
             >
               Multi-tenant Accounts
             </button>
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -446,7 +526,12 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <button
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Dashboard is the first thing user sees when logged in and would summarize data</h3>
+              </div>
+            }>
+              <button
               onClick={handleGenerated.bind(this, 'dashboard')}
               className={`${styles.button} ${
                 generated.dashboard && styles.buttonActive
@@ -454,7 +539,15 @@ export default function Calculator() {
             >
               Dashboard
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Users would upload file content</h3>
+              </div>
+            }>
+<button
               onClick={handleGenerated.bind(this, 'upload')}
               className={`${styles.button} ${
                 generated.upload && styles.buttonActive
@@ -462,23 +555,47 @@ export default function Calculator() {
             >
               File Uploading
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Users would be able to manage and publish their profiles to other users</h3>
+              </div>
+            }>
+<button
               onClick={handleGenerated.bind(this, 'profiles')}
               className={`${styles.button} ${
                 generated.profiles && styles.buttonActive
               }`}
             >
-              Profiles
+              User Profiles
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Users might receive regular automated emails from the app to drive engagement</h3>
+              </div>
+            }>
+              <button
               onClick={handleGenerated.bind(this, 'emails')}
               className={`${styles.button} ${
                 generated.emails && styles.buttonActive
               }`}
             >
-              Emails
+              Automated Emails
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Typical use case would be restaurant reviews or customer satisfaction ratings</h3>
+              </div>
+            }>
+              <button
               onClick={handleGenerated.bind(this, 'ratings')}
               className={`${styles.button} ${
                 generated.ratings && styles.buttonActive
@@ -486,6 +603,8 @@ export default function Calculator() {
             >
               Ratings
             </button>
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -507,7 +626,12 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <button
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Allowing users to send messages to other account users</h3>
+              </div>
+            }>
+              <button
               onClick={handleSocial.bind(this, 'messaging')}
               className={`${styles.button} ${
                 social.messaging && styles.buttonActive
@@ -515,7 +639,15 @@ export default function Calculator() {
             >
               Messaging
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Classic forum functionality or simple commenting function</h3>
+              </div>
+            }>
+<button
               onClick={handleSocial.bind(this, 'forums')}
               className={`${styles.button} ${
                 social.forums && styles.buttonActive
@@ -523,7 +655,15 @@ export default function Calculator() {
             >
               Forums
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Ability to share pieces of information in a controlled way on social media accounts</h3>
+              </div>
+            }>
+              <button
               onClick={handleSocial.bind(this, 'sharing')}
               className={`${styles.button} ${
                 social.sharing && styles.buttonActive
@@ -531,6 +671,8 @@ export default function Calculator() {
             >
               Social Sharing
             </button>
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -552,7 +694,13 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <button
+
+<Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Your app will have revenue model where customers will pay monthly/quarterly/yearly</h3>
+              </div>
+            }>
+              <button
               onClick={handleCommerce.bind(this, 'subscription')}
               className={`${styles.button} ${
                 ecommerce.subscription && styles.buttonActive
@@ -560,7 +708,15 @@ export default function Calculator() {
             >
               Subscription
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Users will be able to browse products and add them to the cart</h3>
+              </div>
+            }>
+              <button
               onClick={handleCommerce.bind(this, 'cart')}
               className={`${styles.button} ${
                 ecommerce.cart && styles.buttonActive
@@ -568,7 +724,15 @@ export default function Calculator() {
             >
               Shopping Cart
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Ability to manage date, e.g. product listings, availabilities of products or other data</h3>
+              </div>
+            }>
+              <button
               onClick={handleCommerce.bind(this, 'management')}
               className={`${styles.button} ${
                 ecommerce.management && styles.buttonActive
@@ -576,6 +740,8 @@ export default function Calculator() {
             >
               Product Management
             </button>
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>
@@ -597,7 +763,13 @@ export default function Calculator() {
             spacing={1}
             sx={{ flexWrap: 'wrap', justifyContent: 'center' }}
           >
-            <button
+
+<Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Content management system would allow edititing of significant parts of the static content without developer intervention</h3>
+              </div>
+            }>
+<button
               onClick={handleManagement.bind(this, 'cms')}
               className={`${styles.button} ${
                 management.cms && styles.buttonActive
@@ -605,15 +777,31 @@ export default function Calculator() {
             >
               CMS Integration
             </button>
-            <button
+            </Tooltip>
+            
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Find out where users come from and how they use your app</h3>
+              </div>
+            }>
+ <button
               onClick={handleManagement.bind(this, 'analytics')}
               className={`${styles.button} ${
                 management.analytics && styles.buttonActive
               }`}
             >
-              Analytics
+              Usage Analytics
             </button>
-            <button
+            </Tooltip>
+           
+
+            <Tooltip title={
+              <div className={styles.tooltip}>
+                <h3>Get your app in multiple languages</h3>
+              </div>
+            }>
+<button
               onClick={handleManagement.bind(this, 'multilingual')}
               className={`${styles.button} ${
                 management.multilingual && styles.buttonActive
@@ -621,6 +809,8 @@ export default function Calculator() {
             >
               Multilingual Support
             </button>
+            </Tooltip>
+            
           </Stack>
         </AccordionDetails>
       </Accordion>

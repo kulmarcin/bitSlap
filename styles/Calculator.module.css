@@ -39,3 +39,10 @@
     background-color: black;
     font-weight: bold;
 }
+
+.tooltip {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
