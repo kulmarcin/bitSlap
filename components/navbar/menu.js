@@ -10,13 +10,13 @@ export default function BasicMenu() {
 
   return (
     <div>
-      <NavLink click={clickHandler} link="#services" current={current}>
+      <NavLink click={clickHandler} link="services" current={current}>
         Services
       </NavLink>
-      <NavLink click={clickHandler} link="#pricing" current={current}>
+      <NavLink click={clickHandler} link="pricing" current={current}>
         Pricing
       </NavLink>
-      <NavLink click={clickHandler} link="#contact" current={current}>
+      <NavLink click={clickHandler} link="contact" current={current}>
         Contact
       </NavLink>
     </div>
