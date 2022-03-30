@@ -6,6 +6,7 @@ function ActiveLink({ children, link, current, click }) {
   return (
     <Link to={link} smooth={true}>
       <button
+        link={link}
         onClick={click}
         className={`${styles.link} ${current == link ? styles.linkActive : ''}`}
       >
