@@ -29,7 +29,10 @@ export default function ButtonAppBar() {
               textAlign: matches ? 'center' : 'left'
             }}
           >
-            Logo
+            <img
+              src="./logo/logoBar.png"
+              style={{ width: 120, height: 48, margin: '0.5rem 0' }}
+            />
           </Typography>
           {!matches && <Menu />}
         </Toolbar>

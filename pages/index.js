@@ -17,6 +17,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Bar />
       <main className={styles.main}>
         <Landing />
