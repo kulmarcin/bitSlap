@@ -81,7 +81,7 @@ export default function Services() {
         <Typography
           variant="h5"
           component="h5"
-          sx={{ color: 'white', alignSelf:'center', marginTop: 5 }}
+          sx={{ color: 'white', alignSelf: 'center', marginTop: 5 }}
         >
           Why people <span style={{ color: 'orange' }}>choose</span> to work
           with <span style={{ color: 'orange' }}>bitSlap</span>?

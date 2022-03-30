@@ -23,7 +23,9 @@
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  color: white;
+  text-shadow: 5px 5px 5px black;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }

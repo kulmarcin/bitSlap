@@ -1,12 +1,12 @@
 import { Typography, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { collection, addDoc } from "firebase/firestore"; 
+import { collection, addDoc } from 'firebase/firestore';
 import styles from '../../styles/Contact.module.css';
 
 import Button from './button';
 import Input from './input';
 
-import db from '../../firebase'
+import db from '../../firebase';
 
 export default function Contact() {
   const desktop = useMediaQuery('(min-width: 768px)');
@@ -16,25 +16,24 @@ export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState(false);
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitHandler = async e => {
     e.preventDefault();
 
     if (describe && name && email) {
-        try {
-            setIsLoading(true)
-            const docRef = await addDoc(collection(db, "submissions"), {
-              name: name,
-              email: email,
-              description: describe
-            });
-            setIsLoading(false)
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            setError(e)
-          }
-
+      try {
+        setIsLoading(true);
+        const docRef = await addDoc(collection(db, 'submissions'), {
+          name: name,
+          email: email,
+          description: describe
+        });
+        setIsLoading(false);
+        console.log('Document written with ID: ', docRef.id);
+      } catch (e) {
+        setError(e);
+      }
 
       setSubmitted(true);
     } else {
@@ -57,9 +56,8 @@ export default function Contact() {
   };
 
   useEffect(() => {
-
-    if(!email) {
-        return
+    if (!email) {
+      return;
     }
 
     const timer = setTimeout(() => {
@@ -121,9 +119,13 @@ export default function Contact() {
           onChange={describeHandler}
           onClick={clickHandler}
         />
-        {!isLoading ? <Button type="submit" variant="outlined" onClick={submitHandler}>
-          Submit
-        </Button> : <div className={styles.ldsdualring}></div>}
+        {!isLoading ? (
+          <Button type="submit" variant="outlined" onClick={submitHandler}>
+            Submit
+          </Button>
+        ) : (
+          <div className={styles.ldsdualring}></div>
+        )}
       </form>
       {submitted && (
         <div
