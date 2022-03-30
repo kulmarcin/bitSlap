@@ -4,24 +4,38 @@
   flex-direction: column;
 }
 
-.logo {
+.title {
   position: absolute;
   margin: 0;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  text-shadow: 10px 10px 5px black;
+  font-weight: bold;
+  font-size: 5.3rem;
+}
+
+.titleDesc {
+  position: absolute;
+  margin: 0;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: 10px 10px 5px black;
+  font-weight: bold;
 }
 
 .description {
   position: absolute;
   margin: 0;
-  top: 50%;
+  top: 60%;
   left: 50%;
   color: white;
   text-align: center;
   transform: translate(-50%, -50%);
-  text-shadow: 5px 5px 5px black;
+  text-shadow: 10px 10px 5px black;
 }
 
 .arrow {

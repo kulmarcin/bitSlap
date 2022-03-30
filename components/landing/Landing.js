@@ -19,9 +19,18 @@ export default function Landing() {
         variant="h1"
         component="h1"
         gutterBottom
-        className={styles.logo}
+        className={styles.title}
       >
-        Logo
+        BITSLAP
+      </Typography>
+
+      <Typography
+        variant="h5"
+        component="h5"
+        gutterBottom
+        className={styles.titleDesc}
+      >
+        Software House
       </Typography>
 
       <Typography variant="h3" component="h3" className={styles.description}>
