@@ -3,6 +3,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-scroll';
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -36,10 +37,9 @@ export default function BasicMenu() {
         }}
         sx={{ marginLeft: -1.4 }}
       >
-        <MenuItem onClick={handleClose}>About</MenuItem>
-        <MenuItem onClick={handleClose}>Services</MenuItem>
-        <MenuItem onClick={handleClose}>Pricing</MenuItem>
-        <MenuItem onClick={handleClose}>Contact</MenuItem>
+        <MenuItem onClick={handleClose}><Link to={'services'} smooth={true}>Services</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link to={'pricing'} smooth={true}>Pricing</Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link to={'contact'} smooth={true}>Contact</Link></MenuItem>
       </Menu>
     </div>
   );
