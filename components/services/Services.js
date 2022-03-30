@@ -16,7 +16,7 @@ export default function Services() {
   const desktop = useMediaQuery('(min-width: 768px)');
 
   return (
-    <div id="services" className={styles.services}>
+    <div name="services" className={styles.services}>
       <Typography variant="h4" component="h4">
         Our Services
       </Typography>

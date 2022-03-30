@@ -76,7 +76,7 @@ export default function Contact() {
   };
 
   return (
-    <div className={styles.contact}>
+    <div name="contact" className={styles.contact}>
       <Typography variant="h4" component="h4">
         Contact
       </Typography>

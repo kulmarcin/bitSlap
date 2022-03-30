@@ -4,7 +4,7 @@ import Calculator from './calculator/Calculator';
 
 export default function Pricing() {
   return (
-    <div id="pricing" className={styles.pricing}>
+    <div name="pricing" className={styles.pricing}>
       <Typography variant="h3" component="h3">
         Pricing
       </Typography>
