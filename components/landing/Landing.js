@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 export default function Landing() {
-  const mobile = useMediaQuery('(max-width:600px');
+  const mobile = useMediaQuery('(max-width:699px');
   const desktop = useMediaQuery('(min-width: 700px)');
 
   let height;
@@ -15,7 +15,6 @@ export default function Landing() {
 
   return (
     <div className={styles.landing}>
-
       <Typography
         variant="h1"
         component="h1"
@@ -25,17 +24,13 @@ export default function Landing() {
         Logo
       </Typography>
 
-      <Typography
-        variant="h3"
-        component="h3"
-        className={styles.description}
-      >
+      <Typography variant="h3" component="h3" className={styles.description}>
         Your End-To-End Web & Mobile Solution Partners
       </Typography>
 
       <Typography className={styles.arrow} variant="h5" component="h5">
         Services
-        <ArrowDownwardIcon fontSize='large' />
+        <ArrowDownwardIcon fontSize="large" />
       </Typography>
       {mobile && (
         <video

@@ -1,48 +1,46 @@
 .calculator {
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .estimation {
-    font-size: 1.7rem;
-    margin: 2rem 0 0 0;
-    color: white;
-    align-self: flex-start;
+  font-size: 1.7rem;
+  margin: 2rem 0 0 0;
+  color: white;
+  align-self: flex-start;
 }
 
 .completion {
-    font-size: 1.7rem;
-    margin: 0.3rem 0;
-    color: white;
-    align-self: flex-start;
+  font-size: 1.7rem;
+  margin: 0.3rem 0;
+  color: white;
+  align-self: flex-start;
 }
 
 .button {
-    background-color: white;
-    border: 1px solid gray;
-    border-radius: 15px;
-    height:30px;
-    transition: background-color 0.25s ease-out;
-    margin-bottom: 5px;
-    min-width: 60px;
-    
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 15px;
+  height: 30px;
+  transition: background-color 0.25s ease-out;
+  margin-bottom: 5px;
+  min-width: 60px;
 }
 
 .button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .buttonActive {
-    color: orange;
-    background-color: black;
-    font-weight: bold;
+  color: orange;
+  background-color: black;
+  font-weight: bold;
 }
 
 .tooltip {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }

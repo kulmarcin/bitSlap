@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
 
 import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -32,5 +32,5 @@ export default function MyApp(props) {
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   emotionCache: PropTypes.object,
-  pageProps: PropTypes.object.isRequired,
+  pageProps: PropTypes.object.isRequired
 };
